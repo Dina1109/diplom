@@ -17,21 +17,23 @@
 
 3. Работа с базой данных MySQl.
    1) Запуск контейнера docker:  
-      docker-compose up -d 
+      docker-compose up
    2) Запуск приложения:  
-      java -jar./artifacts/aqa-shop.jar-P:jdbc.url=jdbc:mysql://localhost:3306/app
+      java -jar ./artifacts/aqa-shop.jar -P:jdbc.url=jdbc:mysql://localhost:3306/app
    3) Запуск тестов:  
-      ./gradlew clean test
+      ./gradlew clean test --info
    4) Сформировать отчет:  
       ./gradlew allureReport
    5) Открыть отчет в браузере командой:  
       ./gradlew allureServe
+   6) Остановить контейнер:
+      docker compose down
 
 4. Работа с базой данных Postgres.
     1) Запуск контейнера docker:  
-       docker-compose up -d 
+       docker-compose up
     2) Запуск приложения:  
-       java -jar./artifacts/aqa-shop.jar-P:jdbc.url=jdbc:mysql://localhost:5432/app
+       java -jar. /artifacts/aqa-shop.jar -P:jdbc.url=jdbc:postgresql://localhost:5432/app
     3) Запуск тестов:  
        ./gradlew clean test -Ddb.url=jdbc:postgresql://localhost:5432/app
     4) Сформировать отчет:  
