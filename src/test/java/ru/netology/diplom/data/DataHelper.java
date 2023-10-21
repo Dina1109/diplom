@@ -131,7 +131,7 @@ public class DataHelper {
                 Integer.toString(enOption.number().numberBetween(100, 999)));
     }
 
-    public static CardInformation getWrongMonth() {
+    public static CardInformation getInvalidMonth() {
         return new CardInformation(
                 cardNumber.getApprovedCardNumber(),
                 dataGenerator.shiftYear(3).getYear(),
@@ -169,7 +169,7 @@ public class DataHelper {
 
     public static CardInformation getZeroMonth() {
         return new CardInformation(
-                "0000000000000000",
+                cardNumber.getApprovedCardNumber(),
                 dataGenerator.shiftYear(0).getYear(),
                 "00",
                 faker.name().fullName(),

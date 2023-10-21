@@ -24,12 +24,11 @@ public class PaymentPage {
     private final SelenideElement continueButton = $(withText("Продолжить"));
 
     private final SelenideElement successNotification = $(withText("Успешно"));
-    private final SelenideElement errorNotification = $(withText("Операция отклонена. Проверьте данные карты"));
+    private final SelenideElement errorNotification = $(withText("Ошибка! Банк отказал в проведении операции."));
     private final SelenideElement invalidFormat = $(withText("Неверный формат"));
     private final SelenideElement requiredField = $(withText("Поле обязательно для заполнения"));
-
-//    private final SelenideElement expiredYearError = $(withText("Истёк срок действия карты"));
-//    private final SelenideElement invalidDateError = $(withText("Неверно указан срок действия карты"));
+    private final SelenideElement expiredYearError = $(withText("Истёк срок действия карты"));
+    private final SelenideElement invalidDateError = $(withText("Неверно указан срок действия карты"));
 
     public PaymentPage() {
         heading.shouldBe(visible);
@@ -53,11 +52,19 @@ public class PaymentPage {
     }
 
     public void verifyInvalidFormatCard() {
-        invalidFormat.shouldBe(visible);
+        invalidFormat.shouldBe(visible, Duration.ofSeconds(15));
     }
 
     public void verifyRequiredFieldCard() {
-        requiredField.shouldBe(visible);
+        requiredField.shouldBe(visible, Duration.ofSeconds(15));
+    }
+
+    public void expiredCardYear() {
+        expiredYearError.shouldBe(visible, Duration.ofSeconds(15));
+    }
+
+    public void verifyInvalidDateCard() {
+        invalidDateError.shouldBe(visible, Duration.ofSeconds(15));
     }
 
 }

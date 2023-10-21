@@ -21,7 +21,7 @@
    2) Запуск приложения:  
       java -jar ./artifacts/aqa-shop.jar -P:jdbc.url=jdbc:mysql://localhost:3306/app
    3) Запуск тестов:  
-      ./gradlew clean test --info
+      ./gradlew clean test '-Ddb.url=jdbc:mysql://localhost:3306/app'
    4) Сформировать отчет:  
       ./gradlew allureReport
    5) Открыть отчет в браузере командой:  
@@ -35,7 +35,7 @@
     2) Запуск приложения:  
        java -jar. /artifacts/aqa-shop.jar -P:jdbc.url=jdbc:postgresql://localhost:5432/app
     3) Запуск тестов:  
-       ./gradlew clean test -Ddb.url=jdbc:postgresql://localhost:5432/app
+       ./gradlew clean test '-Ddb.url=jdbc:postgresql://localhost:5432/app'
     4) Сформировать отчет:  
        ./gradlew allureReport
     5) Открыть отчет в браузере командой:  
