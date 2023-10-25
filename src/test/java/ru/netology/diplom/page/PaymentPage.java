@@ -52,19 +52,18 @@ public class PaymentPage {
     }
 
     public void verifyInvalidFormatCard() {
-        invalidFormat.shouldBe(visible, Duration.ofSeconds(15));
+        invalidFormat.shouldBe(visible);
     }
 
     public void verifyRequiredFieldCard() {
-        requiredField.shouldBe(visible, Duration.ofSeconds(15));
+        requiredField.shouldBe(visible);
     }
 
     public void expiredCardYear() {
-        expiredYearError.shouldBe(visible, Duration.ofSeconds(15));
+        expiredYearError.shouldBe(visible);
     }
 
     public void verifyInvalidDateCard() {
-        invalidDateError.shouldBe(visible, Duration.ofSeconds(15));
+        invalidDateError.shouldBe(visible);
     }
-
 }

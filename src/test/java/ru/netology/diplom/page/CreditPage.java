@@ -52,18 +52,18 @@ public class CreditPage {
     }
 
     public void verifyInvalidFormatCreditCard() {
-        invalidFormat.shouldBe(visible, Duration.ofSeconds(15));
+        invalidFormat.shouldBe(visible);
     }
 
     public void verifyRequiredFieldCreditCard() {
-        requiredField.shouldBe(visible, Duration.ofSeconds(15));
+        requiredField.shouldBe(visible);
     }
 
     public void expiredCreditCardYear() {
-        expiredYearError.shouldBe(visible, Duration.ofSeconds(15));
+        expiredYearError.shouldBe(visible);
     }
 
     public void verifyInvalidDateCreditCard() {
-        invalidDateError.shouldBe(visible, Duration.ofSeconds(15));
+        invalidDateError.shouldBe(visible);
     }
 }

@@ -1,14 +1,10 @@
 package ru.netology.diplom.data;
 
 import com.github.javafaker.Faker;
+import io.qameta.allure.model.Status;
 import lombok.Value;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Calendar;
 import java.util.Locale;
-import java.util.Random;
+
 
 public class DataHelper {
     static Faker enOption = new Faker(new Locale("en"));
@@ -125,7 +121,7 @@ public class DataHelper {
     public static CardInformation getWrongYear() {
         return new CardInformation(
                 cardNumber.getApprovedCardNumber(),
-                dataGenerator.wrongYear().getYear(),
+                dataGenerator.wrongYear(),
                 dataGenerator.shiftMonth(2).getMonth(),
                 enOption.name().fullName(),
                 Integer.toString(enOption.number().numberBetween(100, 999)));
@@ -193,4 +189,20 @@ public class DataHelper {
         private String holder;
         private String CVV;
     }
+
+    @Value
+    public static class PaymentId {
+        private String id;
+    }
+
+    @Value
+    public static class StatusPayment {
+        public CardNumber status;
+    }
+
+    @Value
+    public static class StatusCredit {
+        public CardNumber status;
+    }
+
 }

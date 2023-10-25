@@ -17,8 +17,9 @@ public class DataGenerator {
         return new Year(formatterYears.format(newDate));
     }
 
-    public Year wrongYear() {
-        return new Year(Integer.toString(faker.number().numberBetween(28, 99)));
+    public String wrongYear() {
+        //return new Year(Integer.toString(faker.number().numberBetween(28, 99)));
+        return LocalDate.now().plusYears(5).format(DateTimeFormatter.ofPattern("yy"));
     }
 
     public Month shiftMonth(int numberOfMonths) {

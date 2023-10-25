@@ -24,5 +24,4 @@ public class StartPage {
         byCreditButton.click();
         return new CreditPage();
     }
-
 }

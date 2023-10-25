@@ -5,8 +5,10 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 import ru.netology.diplom.data.DataHelper;
 import ru.netology.diplom.data.SQLHelper;
+import ru.netology.diplom.page.PaymentPage;
 import ru.netology.diplom.page.StartPage;
 import static com.codeborne.selenide.Selenide.open;
+
 
 public class PaymentTest {
 
@@ -19,6 +21,7 @@ public class PaymentTest {
     static void tearDownAll() {
         SelenideLogger.removeListener("allure");
     }
+
     @BeforeEach
     void setup() {
         open("http://localhost:8080");
@@ -34,7 +37,7 @@ public class PaymentTest {
         payCard.verifySuccessNotificationCard();
 
         var paymentId = SQLHelper.getPaymentId();
-        var statusPayment = SQLHelper.getStatusPayment(paymentId);
+        var statusPayment = SQLHelper.getStatusPayment();
         Assertions.assertEquals("APPROVED", statusPayment);
     }
 
@@ -48,7 +51,7 @@ public class PaymentTest {
         payCard.verifySuccessNotificationCard();
 
         var paymentId = SQLHelper.getPaymentId();
-        var statusPayment = SQLHelper.getStatusPayment(paymentId);
+        var statusPayment = SQLHelper.getStatusPayment();
         Assertions.assertEquals("APPROVED", statusPayment);
     }
 
@@ -62,7 +65,7 @@ public class PaymentTest {
         payCard.verifyErrorNotificationCard();
 
         var paymentId = SQLHelper.getPaymentId();
-        var statusPayment = SQLHelper.getStatusPayment(paymentId);
+        var statusPayment = SQLHelper.getStatusPayment();
         Assertions.assertEquals("DECLINED", statusPayment);
     }
 
@@ -165,7 +168,7 @@ public class PaymentTest {
         payCard.verifyInvalidFormatCard();
     }
 
-    @DisplayName("Card - Invalid CVV.")
+    @DisplayName("Card - Invalid CVV")
     @Test
     public void shouldNotPayInvalidCVV() {
         var startPage = new StartPage();
@@ -202,7 +205,7 @@ public class PaymentTest {
         var payCard = startPage.openBuyCard();
         var invalidCard = DataHelper.getZeroCard();
         payCard.enterCardData(invalidCard);
-        payCard.verifyErrorNotificationCard();
+        payCard.verifyInvalidFormatCard();
     }
 
     @DisplayName("Card - Zero month")
@@ -222,6 +225,6 @@ public class PaymentTest {
         var payCard = startPage.openBuyCard();
         var invalidCard = DataHelper.getZeroCVV();
         payCard.enterCardData(invalidCard);
-        payCard.verifyErrorNotificationCard();
+        payCard.verifyInvalidFormatCard();
     }
 }

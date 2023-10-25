@@ -34,7 +34,7 @@ public class CreditTest {
         buyCredit.verifySuccessNotificationCreditCard();
 
         var paymentId = SQLHelper.getPaymentId();
-        var statusPayment = SQLHelper.getStatusCredit(paymentId);
+        var statusPayment = SQLHelper.getStatusCredit();
         Assertions.assertEquals("APPROVED", statusPayment);
     }
 
@@ -48,11 +48,11 @@ public class CreditTest {
         buyCredit.verifySuccessNotificationCreditCard();
 
         var paymentId = SQLHelper.getPaymentId();
-        var statusPayment = SQLHelper.getStatusCredit(paymentId);
+        var statusPayment = SQLHelper.getStatusCredit();
         Assertions.assertEquals("APPROVED", statusPayment);
     }
 
-    @DisplayName("Credit - All empty fields")
+    @DisplayName("Credit - Declined card")
     @Test
     public void shouldNotCreditDeclinedCard() {
         var startPage = new StartPage();
@@ -62,11 +62,11 @@ public class CreditTest {
         buyCredit.verifyErrorNotificationCreditCard();
 
         var paymentId = SQLHelper.getPaymentId();
-        var statusPayment = SQLHelper.getStatusCredit(paymentId);
+        var statusPayment = SQLHelper.getStatusCredit();
         Assertions.assertEquals("DECLINED", statusPayment);
     }
 
-    @DisplayName("Credit - All blank data.")
+    @DisplayName("Credit - All fields empty")
     @Test
     public void shouldNotCreditEmptyForm() {
         var startPage = new StartPage();
@@ -202,7 +202,7 @@ public class CreditTest {
         var buyCredit = startPage.openBuyCredit();
         var invalidCard = DataHelper.getZeroCard();
         buyCredit.enterCreditCardData(invalidCard);
-        buyCredit.verifyErrorNotificationCreditCard();
+        buyCredit.verifyInvalidFormatCreditCard();
     }
 
     @DisplayName("Credit- Zero month")
@@ -221,6 +221,6 @@ public class CreditTest {
         var buyCredit = startPage.openBuyCredit();
         var invalidCard = DataHelper.getZeroCVV();
         buyCredit.enterCreditCardData(invalidCard);
-        buyCredit.verifyErrorNotificationCreditCard();
+        buyCredit.verifyInvalidFormatCreditCard();
     }
 }
