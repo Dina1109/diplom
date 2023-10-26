@@ -33,9 +33,8 @@ public class CreditTest {
         buyCredit.enterCreditCardData(approvedCardInformation);
         buyCredit.verifySuccessNotificationCreditCard();
 
-        var paymentId = SQLHelper.getPaymentId();
         var statusPayment = SQLHelper.getStatusCredit();
-        Assertions.assertEquals("APPROVED", statusPayment);
+        Assertions.assertEquals("APPROVED", statusPayment.getStatus());
     }
 
     @DisplayName("Successful credit purchase with current M and Y.")
@@ -47,9 +46,8 @@ public class CreditTest {
         buyCredit.enterCreditCardData(validCardInformation);
         buyCredit.verifySuccessNotificationCreditCard();
 
-        var paymentId = SQLHelper.getPaymentId();
         var statusPayment = SQLHelper.getStatusCredit();
-        Assertions.assertEquals("APPROVED", statusPayment);
+        Assertions.assertEquals("APPROVED", statusPayment.getStatus());
     }
 
     @DisplayName("Credit - Declined card")
@@ -61,9 +59,8 @@ public class CreditTest {
         buyCredit.enterCreditCardData(declinedCard);
         buyCredit.verifyErrorNotificationCreditCard();
 
-        var paymentId = SQLHelper.getPaymentId();
         var statusPayment = SQLHelper.getStatusCredit();
-        Assertions.assertEquals("DECLINED", statusPayment);
+        Assertions.assertEquals("DECLINED", statusPayment.getStatus());
     }
 
     @DisplayName("Credit - All fields empty")

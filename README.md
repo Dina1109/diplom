@@ -19,7 +19,7 @@
    1) Запуск контейнера docker:  
       docker-compose up
    2) Запуск приложения:  
-      java '-Dspring.datasource.url=jdbc:mysql://localhost:3306/app' -jar./artifacts/aqa-shop.jar
+      java '-Dspring.datasource.url=jdbc:mysql://localhost:3306/app' -jar ./artifacts/aqa-shop.jar
    3) Запуск тестов:  
       ./gradlew clean test '-Ddb.url=jdbc:mysql://localhost:3306/app'
    4) Сформировать отчет:  
@@ -33,7 +33,7 @@
     1) Запуск контейнера docker:  
        docker-compose up
     2) Запуск приложения:  
-       java '-Dspring.datasource.url=jdbc:mysql://localhost:5432/app' -jar./artifacts/aqa-shop.jar
+       java '-Dspring.datasource.url=jdbc:postgresql://localhost:5432/app' -jar ./artifacts/aqa-shop.jar
     3) Запуск тестов:  
        ./gradlew clean test '-Ddb.url=jdbc:postgresql://localhost:5432/app'
     4) Сформировать отчет:  

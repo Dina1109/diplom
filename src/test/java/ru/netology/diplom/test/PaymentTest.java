@@ -5,7 +5,6 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 import ru.netology.diplom.data.DataHelper;
 import ru.netology.diplom.data.SQLHelper;
-import ru.netology.diplom.page.PaymentPage;
 import ru.netology.diplom.page.StartPage;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -36,9 +35,8 @@ public class PaymentTest {
         payCard.enterCardData(approvedCardInformation);
         payCard.verifySuccessNotificationCard();
 
-        var paymentId = SQLHelper.getPaymentId();
         var statusPayment = SQLHelper.getStatusPayment();
-        Assertions.assertEquals("APPROVED", statusPayment);
+        Assertions.assertEquals("APPROVED", statusPayment.getStatus());
     }
 
     @DisplayName("Card - Successful purchase with current date")
@@ -50,9 +48,8 @@ public class PaymentTest {
         payCard.enterCardData(validCardInformation);
         payCard.verifySuccessNotificationCard();
 
-        var paymentId = SQLHelper.getPaymentId();
         var statusPayment = SQLHelper.getStatusPayment();
-        Assertions.assertEquals("APPROVED", statusPayment);
+        Assertions.assertEquals("APPROVED", statusPayment.getStatus());
     }
 
     @DisplayName("Card - Declined card")
@@ -64,9 +61,8 @@ public class PaymentTest {
         payCard.enterCardData(declinedCard);
         payCard.verifyErrorNotificationCard();
 
-        var paymentId = SQLHelper.getPaymentId();
         var statusPayment = SQLHelper.getStatusPayment();
-        Assertions.assertEquals("DECLINED", statusPayment);
+        Assertions.assertEquals("DECLINED", statusPayment.getStatus());
     }
 
     @DisplayName("Card - All fields empty")

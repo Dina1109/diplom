@@ -1,7 +1,9 @@
 package ru.netology.diplom.data;
 
 import com.github.javafaker.Faker;
-import io.qameta.allure.model.Status;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.Value;
 import java.util.Locale;
 
@@ -195,14 +197,15 @@ public class DataHelper {
         private String id;
     }
 
-    @Value
+    @Data
+    @NoArgsConstructor
     public static class StatusPayment {
-        public CardNumber status;
+        private String status;
     }
 
-    @Value
+    @Data
+    @NoArgsConstructor
     public static class StatusCredit {
-        public CardNumber status;
+        private String status;
     }
-
 }
